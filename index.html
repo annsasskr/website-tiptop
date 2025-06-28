@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Top Sauber - Professionelle Reinigungsdienstleistungen</title>
+    <style>
+        /* Allgemeine Stile */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #3498db;
+        }
+        
+        nav {
+            width: 100%;
+            order: 3;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        nav.active {
+            display: block;
+        }
+        
+        nav ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            background-color: #34495e;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        nav ul li {
+            margin: 5px 0;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: block;
+            padding: 8px 10px;
+        }
+        
+        nav ul li a:hover {
+            color: #3498db;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 3px;
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            order: 2;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('cleaning-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .hero-content {
+            width: 100%;
+            padding: 0 15px;
+        }
+        
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Dienstleistungen */
+        .services {
+            padding: 50px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title h2 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .service-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            margin: 0 10px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .service-content p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        /* Über uns Section */
+        .about {
+            padding: 50px 0;
+            background-color: #f9f9f9;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .about-text h3 {
+            font-size: 22px;
+            color: #2c3e50;
+            margin: 25px 0 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .values-list {
+            margin: 20px 0;
+            list-style-type: none;
+        }
+
+        .values-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .values-list li:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+        
+        /* Angebot anfordern */
+        .quote {
+            padding: 50px 0;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+        }
+        
+        .quote h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .quote p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 15px;
+        }
+        
+        .btn-light {
+            background-color: white;
+            color: #3498db;
+        }
+        
+        .btn-light:hover {
+            background-color: #ecf0f1;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 12px;
+        }
+        
+        /* Responsive Design für größere Bildschirme */
+        @media (min-width: 768px) {
+            .header-container {
+                flex-wrap: nowrap;
+            }
+            
+            .logo {
+                margin-bottom: 0;
+            }
+            
+            .logo img {
+                height: 60px;
+            }
+            
+            .logo h1 {
+                font-size: 24px;
+            }
+            
+            nav {
+                width: auto;
+                order: 2;
+                margin-top: 0;
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: row;
+                background: none;
+                padding: 0;
+            }
+            
+            nav ul li {
+                margin-left: 20px;
+            }
+            
+            nav ul li a {
+                padding: 5px 0;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+            
+            .hero {
+                height: 500px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .service-card {
+                margin: 0;
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .hero h2 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header mit Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Tip Top Sauber Logo">
+                <h1>Tip Top <span>Sauber</span></h1>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#services">Dienstleistungen</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Professionelle Reinigung für Ihr Gewerbe ,Zuhause oder Büro</h2>
+                <p>Wir bieten erstklassige Reinigungsdienstleistungen mit höchsten Standards zu wettbewerbsfähigen Preisen.</p>
+                <a href="tel:+4917642989660" class="btn">Jetzt anrufen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dienstleistungen -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Unsere Dienstleistungen</h2>
+                <p>Entdecken Sie unsere umfassenden Reinigungslösungen, die auf Ihre Bedürfnisse zugeschnitten sind.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Dienstleistung 1 -->
+                 <div class="service-card">
+                    <div class="service-img" style="background-image: url('fensterreinigung.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Fensterreinigung</h3>
+                        <p>Streifenfreie Fensterreinigung für Privathaushalte und Gewerbe. Inklusive Rahmen und Simse für ein perfektes Ergebnis.</p>
+                        <a href="tel:+4917642989660" class="btn">Angebot anfordern</a>
+                    </div>
+                </div>
+
+                <!-- Dienstleistung 2 -->
+                 <div class="service-card">
+                    <div class="service-img" style="background-image: url('teppichreinigung.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Treppenhausreinigung</h3>
+                        <p>Saubere, gepflegte Treppenhäuser für Mieter, Eigentümer und Gewerbebetriebe. Unsere gründliche Reinigung entfernt Staub, Schmutz und hartnäckige Verschmutzungen zuverlässig für ein einladendes und hygienisches Umfeld</p>
+                        <a href="tel:+4917642989660" class="btn">Angebot anfordern</a>
+                    </div>
+                </div>
+
+                <!-- Dienstleistung 3 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('wohnungsreinigung.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Wohnungsreinigung</h3>
+                        <p>Komplette Grundreinigung oder regelmäßige Reinigung Ihrer Wohnung. Wir verwenden umweltfreundliche Produkte für ein gesundes Zuhause.</p>
+                        <a href="tel:+4917642989660" class="btn">Angebot anfordern</a>
+                    </div>
+                </div>
+                
+                <!-- Dienstleistung 4 -->
+                 <div class="service-card">
+                    <div class="service-img" style="background-image: url('bueroeinigung.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Büroreinigung</h3>
+                        <p>Tägliche oder wöchentliche Reinigung Ihrer Büroräume. Wir arbeiten außerhalb der Geschäftszeiten, um Ihre Arbeit nicht zu stören.</p>
+                        <a href="tel:+4917642989660" class="btn">Angebot anfordern</a>
+                    </div>
+                </div>
+
+                <!-- Dienstleistung 5 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('bauendreinigung.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Bauendreinigung</h3>
+                        <p>Umfassende Reinigung nach Bau- oder Renovierungsarbeiten. Entfernung von Staub, Spachtelmasse und anderen Rückständen.</p>
+                        <a href="tel:+4917642989660" class="btn">Angebot anfordern</a>
+                    </div>
+                </div>
+                
+                <!-- Dienstleistung 6 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('sonderreinigung.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Sonderreinigung</h3>
+                        <p>Individuelle Reinigungslösungen für besondere Anforderungen wie Veranstaltungen, Umzüge oder spezielle Oberflächen.</p>
+                        <a href="tel:+4917642989660" class="btn">Angebot anfordern</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Über uns Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Über Tip Top Sauber</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Seit unserer Gründung haben wir uns der Bereitstellung erstklassiger Reinigungsdienstleistungen mit höchsten Qualitätsstandards verschrieben. Unser Team besteht aus erfahrenen Fachkräften, die mit Leidenschaft und Hingabe arbeiten, um Ihren Wohn- oder Arbeitsraum in ein makelloses und hygienisches Umfeld zu verwandeln.</p>
+                    
+                    <h3>Unsere Arbeitsmoral</h3>
+                    
+                    <p>Bei Tip Top Sauber glauben wir, dass Sauberkeit mehr ist als nur das Entfernen von Schmutz - es ist die Schaffung eines angenehmen und gesunden Lebensraums. Unsere Arbeitsmoral basiert auf drei grundlegenden Prinzipien:</p>
+                    
+                    <ul class="values-list">
+                        <li><strong>Hingabe zur Perfektion:</strong> Wir akzeptieren keine halben Sachen. Jede Reinigung wird mit größter Sorgfalt und Aufmerksamkeit für Details durchgeführt.</li>
+                        <li><strong>Respekt vor Ihrem Eigentum:</strong> Wir behandeln Ihr Zuhause oder Büro mit dem gleichen Respekt, den wir für unser eigenes Eigentum aufbringen würden.</li>
+                        <li><strong>Verlässlichkeit:</strong> Wenn wir einen Termin vereinbaren, können Sie sich darauf verlassen, dass wir pünktlich und vorbereitet erscheinen.</li>
+                    </ul>
+                    
+                    <h3>Unsere Mission</h3>
+                    
+                    <p>Unser oberstes Ziel ist die vollständige Zufriedenheit unserer Kunden. Wir verstehen, dass jeder Kunde einzigartige Bedürfnisse hat, und passen unsere Dienstleistungen entsprechend an. Durch:</p>
+                    
+                    <ul class="values-list">
+                        <li>Persönliche Beratung und individuelle Reinigungskonzepte</li>
+                        <li>Verwendung hochwertiger, umweltfreundlicher Reinigungsmittel</li>
+                        <li>Regelmäßige Schulungen unseres Personals</li>
+                        <li>Transparente Preise ohne versteckte Kosten</li>
+                    </ul>
+                    
+                    <p>streben wir danach, nicht nur Ihre Erwartungen zu erfüllen, sondern zu übertreffen. Ihr Feedback ist uns wichtig und hilft uns, unsere Dienstleistungen kontinuierlich zu verbessern.</p>
+                    
+                    <h3>Warum uns wählen?</h3>
+                    
+                    <p>In einer Branche mit vielen Anbietern heben wir uns durch unsere Professionalität und unseren persönlichen Service ab. Wir sind nicht nur ein Reinigungsdienst - wir sind Ihr Partner für ein saubereres, gesünderes Lebensumfeld. Unser Versprechen an Sie:</p>
+                    
+                    <ul class="values-list">
+                        <li>Qualität und Kundenzufriedenheit stehen bei uns an erster Stelle.</li>
+                        <li>Versicherte und geprüfte Mitarbeiter</li>
+                        <li>Flexible Terminvereinbarungen, auch kurzfristig</li>
+                        <li>Diskretion und Vertraulichkeit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Angebot anfordern -->
+    <section class="quote">
+        <div class="container">
+            <h2>Bereit für eine makellose Reinigung?</h2>
+            <p>Kontaktieren Sie uns noch heute für ein kostenloses Angebot. Unser freundliches Team berät Sie gerne zu unseren Dienstleistungen und Preisen.</p>
+            <a href="tel:+4917642989660" class="btn btn-light">Jetzt anrufen</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Tip Top Sauber</h3>
+                    <p>Ihr zuverlässiger Partner für professionelle Reinigungsdienstleistungen in Essen.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <ul>
+                        <li>Kurfürstenstr 1</li>
+                        <li>45138 Essen</li>
+                        <li><a href="tel:+4917642989660">+49 17642989660</a></li>
+                        <li><a href="mailto:info@tiptopsauber.de">info@tiptop-sauber.org</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Öffnungszeiten</h3>
+                    <ul>
+                        <li>Mo-Fr: 8:00 - 18:00</li>
+                        <li>Sa: 9:00 - 14:00</li>
+                        <li>So: Geschlossen</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Startseite</a></li>
+                        <li><a href="#services">Dienstleistungen</a></li>
+                        <li><a href="#about">Über uns</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tip Top Sauber. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        });
+        
+        // Schließen des Menüs beim Klicken auf einen Link (für mobile Ansicht)
+        const navLinks = document.querySelectorAll('#mainNav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 768) {
+                    document.getElementById('mainNav').classList.remove('active');
+                }
+            });
+        });
+        
+        // Anpassung der Hero-Section Höhe für mobile Geräte
+        function adjustHeroHeight() {
+            const hero = document.querySelector('.hero');
+            if (window.innerWidth < 768) {
+                hero.style.height = Math.min(window.innerHeight * 0.8, 500) + 'px';
+            } else {
+                hero.style.height = '500px';
+            }
+        }
+        
+        // Initiale Anpassung und bei Fensteränderung
+        adjustHeroHeight();
+        window.addEventListener('resize', adjustHeroHeight);
+    </script>
+</body>
+</html>
